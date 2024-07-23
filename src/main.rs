@@ -34,6 +34,21 @@ fn gen_pwd(passwd_type: &str, length: u8) {
         }
         "a" => {
             let mut passwd = String::new();
+            for _ in 0..length {
+                let mut buf = [0; 4];
+                passwd += char::from_u32(
+                    rand::thread_rng().gen_range(0..=15)
+                        + match rand::thread_rng().gen_range(0..=4) {
+                            0 => 65,
+                            1 => 58,
+                            2 => 48,
+                            3 => 75,
+                            _ => 33,
+                        },
+                )
+                .unwrap()
+                .encode_utf8(&mut buf);
+            }
             println!("{}", passwd);
         }
         _ => {
