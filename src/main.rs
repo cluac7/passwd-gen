@@ -1,5 +1,6 @@
 // This should allow us to input arguments from the command line
 // It is probably not the best way to do it since it is my first time
+use rand::{self, Rng};
 use std::{any::type_name_of_val, env};
 
 fn main() {
@@ -16,11 +17,34 @@ fn main() {
         }
     };
 
-    println!(
-        "The type of the password should be: {}, it is a {}",
-        passwd_type,
-        type_name_of_val(passwd_type)
-    );
+    gen_pwd(passwd_type, length);
+}
+
+fn gen_pwd(passwd_type: &str, length: u8) {
+    match passwd_type {
+        "l" => {
+            let mut passwd = String::new();
+            for _ in 0..length {
+                let mut buf = [0; 4];
+                // passwd += char::from_u32(rand::thread_rng().gen_range(97..=122))
+                //     .unwrap()
+                //     .encode_utf8(&mut buf);
+                // println!(
+                //     "{}",
+                //     char::from_u32(rand::thread_rng().gen_range(97..=122)).unwrap()
+                // );
+            }
+            println!("{}", passwd);
+        }
+        "a" => {
+            let passwd = String::new();
+            println!("{}", passwd);
+        }
+        _ => {
+            println!("The type of the password should be either 'l' or 'a'");
+            usage();
+        }
+    }
 }
 
 fn usage() {
