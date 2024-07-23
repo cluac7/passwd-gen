@@ -4,20 +4,23 @@ use std::{any::type_name_of_val, env};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let length = &args[1];
+    let length_str = &args[1];
     let passwd_type = &args[2];
 
-    println!(
-        "The length of the password should be: {}, it is a {}",
-        length,
-        type_name_of_val(length)
-    );
+    let length = match length_str.parse::<u8>() {
+        Ok(n) => n,
+        Err(_) => {
+            println!("The length of the password should be a number between 0 and 255");
+            usage();
+            return;
+        }
+    };
+
     println!(
         "The type of the password should be: {}, it is a {}",
         passwd_type,
         type_name_of_val(passwd_type)
     );
-    usage();
 }
 
 fn usage() {
