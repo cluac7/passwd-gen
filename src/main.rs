@@ -1,7 +1,7 @@
 // This should allow us to input arguments from the command line
 // It is probably not the best way to do it since it is my first time
-use rand::{self, Rng};
-use std::{any::type_name_of_val, env};
+use rand::Rng;
+use std::env;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
