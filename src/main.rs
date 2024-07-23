@@ -26,13 +26,9 @@ fn gen_pwd(passwd_type: &str, length: u8) {
             let mut passwd = String::new();
             for _ in 0..length {
                 let mut buf = [0; 4];
-                // passwd += char::from_u32(rand::thread_rng().gen_range(97..=122))
-                //     .unwrap()
-                //     .encode_utf8(&mut buf);
-                // println!(
-                //     "{}",
-                //     char::from_u32(rand::thread_rng().gen_range(97..=122)).unwrap()
-                // );
+                passwd += char::from_u32(rand::thread_rng().gen_range(97..=122))
+                    .unwrap()
+                    .encode_utf8(&mut buf);
             }
             println!("{}", passwd);
         }
