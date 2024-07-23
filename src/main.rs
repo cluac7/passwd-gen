@@ -37,7 +37,7 @@ fn gen_pwd(passwd_type: &str, length: u8) {
             println!("{}", passwd);
         }
         "a" => {
-            let passwd = String::new();
+            let mut passwd = String::new();
             println!("{}", passwd);
         }
         _ => {
