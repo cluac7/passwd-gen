@@ -17,4 +17,15 @@ fn main() {
         passwd_type,
         type_name_of_val(passwd_type)
     );
+    usage();
+}
+
+fn usage() {
+    println!(
+        r#"
+Usage: passwd-gen <length> <type>
+    <length>    The length of the password (0-255)
+    <type>      The type of the password (l: lowercase, a: all characters)
+        "#
+    );
 }
